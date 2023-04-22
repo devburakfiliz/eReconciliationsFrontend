@@ -31,7 +31,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let loginModel = Object.assign({},this.loginForm.value)
       this.authService.login(loginModel).subscribe((res =>{
-        console.log(res);
+        if (this.authService.redirectUrl) {
+          this.router.navigate([this.authService.redirectUrl])
+        }
+        else{
+          this.router.navigate([""])
+        }
+        localStorage.setItem("token",res.data.token)
       }))
     }
   }

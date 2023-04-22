@@ -20,4 +20,13 @@ export class AuthService {
     let api ="https://localhost:7043/api/Auth/login";
     return this.httpClient.post<SingleResponseModel<TokenModel>>(api,loginModel);
   }
+
+  isAuthenticated(){
+    if (localStorage.getItem("token")) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
