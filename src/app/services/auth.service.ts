@@ -4,6 +4,7 @@ import { LoginModel } from '../models/loginModel';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
+import { RegisterDto } from '../models/dtos/registerDto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class AuthService {
   constructor(
     private httpClient : HttpClient
   ) { }
+
+  register(registerDto:RegisterDto){
+    let api ="https://localhost:7043/api/Auth/register";
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(api,registerDto);
+  }
 
   login(loginModel:LoginModel){
     let api ="https://localhost:7043/api/Auth/login";

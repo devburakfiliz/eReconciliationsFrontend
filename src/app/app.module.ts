@@ -11,12 +11,15 @@ import {     ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { RegisterComponent } from './components/register/register.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { ToastrModule } from 'ngx-toastr';
       progressBar:true,closeButton:true,timeOut:3000
     })
   ],
-  providers: [],
+  providers: [
+    [DatePipe]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
